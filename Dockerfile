@@ -1,4 +1,3 @@
-# syntax=docker/dockerfile:1
 
 ### Dev Stage
 FROM openmrs/openmrs-core:dev-amazoncorretto-11 AS dev

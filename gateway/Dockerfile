@@ -1,5 +1,4 @@
-# syntax=docker/dockerfile:1.3
-FROM nginx:1.25-alpine
+FROM nginx:alpine
 
 ENV FRAME_ANCESTORS ""
 
