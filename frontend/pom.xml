@@ -4,12 +4,12 @@
 
   <parent>
     <groupId>org.openmrs.module</groupId>
-    <artifactId>ugandaemr</artifactId>
+    <artifactId>distro-emr</artifactId>
     <version>4.0.3-SNAPSHOT</version>
   </parent>
 
   <artifactId>ugandaemr-frontend</artifactId>
-  <name>UgandaEMR Module </name>
+  <name>UgandaEMR Distro </name>
   <packaging>pom</packaging>
 
 

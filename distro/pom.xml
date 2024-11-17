@@ -9,7 +9,7 @@
     <version>4.0.3-SNAPSHOT</version>
   </parent>
 
-  <artifactId>ugandaemr-distro-configuration</artifactId>
+  <artifactId>ugandaemr-distro</artifactId>
   <packaging>pom</packaging>
   <name>UgandaEMR Distro</name>
 
@@ -83,7 +83,6 @@
     <ugandaemrSyncVersion>1.1.14</ugandaemrSyncVersion>
     <openmrsOwaVersion>1.14.0</openmrsOwaVersion>
     <ugandaemrfingerprintVersion>1.1.0</ugandaemrfingerprintVersion>
-    <cohortModuleVersion>3.4.0</cohortModuleVersion>
     <stockmanagementVersion>1.4.2</stockmanagementVersion>
     <spaModuleVersion>2.0.0</spaModuleVersion>
     <o3formsVersion>2.3.0</o3formsVersion>
@@ -244,12 +243,6 @@
       <scope>provided</scope>
     </dependency>
 
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>htmlformentry-api-2.3</artifactId>
-      <version>${htmlformentryVersion}</version>
-      <scope>test</scope>
-    </dependency>
 
     <dependency>
       <groupId>org.openmrs.module</groupId>
@@ -421,57 +414,7 @@
       <type>test-jar</type>
     </dependency>
 
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>cohort</artifactId>
-      <version>${cohortModuleVersion}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.json</groupId>
-      <artifactId>json</artifactId>
-      <version>20231013</version>
-      <type>jar</type>
-    </dependency>
-
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>htmlformentry</artifactId>
-      <version>3.14.0</version>
-      <scope>runtime</scope>
-    </dependency>
-
-    <!-- Cohort Module -->
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>cohort</artifactId>
-      <version>2.2.0</version>
-      <scope>runtime</scope>
-    </dependency>
-
-    <!-- O3 Forms -->
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>o3forms</artifactId>
-      <version>2.2.0</version>
-      <scope>runtime</scope>
-    </dependency>
-
-    <!-- Attachments -->
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>attachments</artifactId>
-      <version>2.5.0</version>
-      <scope>runtime</scope>
-    </dependency>
-
-    <!-- Open Concept Lab -->
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>openconceptlab</artifactId>
-      <version>2.2.0</version>
-      <scope>runtime</scope>
-    </dependency>
+   
 
   </dependencies>
 
