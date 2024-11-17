@@ -29,6 +29,8 @@ services:
 
   backend:
     container_name: "backend"
+    depends_on:
+      - db
     build:
       context: .
     environment:
@@ -49,7 +51,7 @@ services:
     container_name: "db"
     image: mariadb:10.8.2
     restart: "unless-stopped"
-    command: "mysqld --character-set-server=utf8 --collation-server=utf8_general_ci --datadir=/openmrs-db"
+    command: "mysqld --character-set-server=utf8 --collation-server=utf8_general_ci"
     healthcheck:
       test: 'mysql --user=${OMRS_DB_USER:-openmrs} --password=${OMRS_DB_PASSWORD:-openmrs} --execute "SHOW DATABASES;"'
       interval: 3s
@@ -60,3 +62,5 @@ services:
       MYSQL_USER: ${OPENMRS_DB_USER:-openmrs}
       MYSQL_PASSWORD: ${OPENMRS_DB_PASSWORD:-openmrs}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-openmrs}
+    volumes:
+      - /Users/jaba/Documents/projects/openmrs/grrh/db:/docker-entrypoint-initdb.d
