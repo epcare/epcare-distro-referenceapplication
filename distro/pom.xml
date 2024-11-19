@@ -1,5 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
@@ -14,9 +15,9 @@
   <name>UgandaEMR Distro</name>
 
   <modules>
-		<module>omod</module>
-		<module>tools</module>
-	</modules>
+    <module>omod</module>
+    <!-- <module>tools</module> -->
+  </modules>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -29,19 +30,15 @@
 
     <openMRSVersion>2.6.3</openMRSVersion>
     <openmrsTestutilsVersion>1.3</openmrsTestutilsVersion>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <webservices.restModuleVersion>2.40.0</webservices.restModuleVersion>
     <initializerVersion>2.5.2</initializerVersion>
 
     <!-- Modules Bundled for Uganda distribution  -->
-    <!-- TODO: Arrange the dependencies and variables in alphabetical order -->
-    <!-- TODO: Remove dependencies on API where omods are available -->
     <adminuiVersion>1.6.0</adminuiVersion>
     <addresshierarchyVersion>2.15.2</addresshierarchyVersion>
     <allergyuiVersion>1.8.4</allergyuiVersion>
     <appframeworkVersion>2.17.0</appframeworkVersion>
     <appuiVersion>1.17.0</appuiVersion>
-    <!--<appointmentschedulingVersion>1.16.0</appointmentschedulingVersion>-->
     <appointmentschedulinguiVersion>1.12.0</appointmentschedulinguiVersion>
     <bahmniappointmentVersion>1.6.0</bahmniappointmentVersion>
     <bedmanagementVersion>6.0.0</bedmanagementVersion>
@@ -93,8 +90,6 @@
     <o3formsVersion>2.3.0</o3formsVersion>
     <orderTemplatesVersion>1.0.3</orderTemplatesVersion>
     <attachmentsVersion>3.0.0</attachmentsVersion>
-
-    <!-- core configuration library -->
     <ugandaemrReportsVersion>2.1.2</ugandaemrReportsVersion>
   </properties>
 
@@ -418,9 +413,6 @@
       <scope>provided</scope>
       <type>test-jar</type>
     </dependency>
-
-   
-
   </dependencies>
 
   <build>
