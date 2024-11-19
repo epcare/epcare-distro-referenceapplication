@@ -13,6 +13,11 @@
   <packaging>pom</packaging>
   <name>UgandaEMR Distro</name>
 
+  <modules>
+		<module>omod</module>
+		<module>tools</module>
+	</modules>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <distro.baseDir>${project.build.directory}/${project.artifactId}</distro.baseDir>

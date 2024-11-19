@@ -1,0 +1,133 @@
+{
+  "name": "DS TB: HMIS TB 003 - TB DOT followup Section",
+  "version": "4.0.0",
+  "description": "This is a followup form for a DS-TB DOT section patient",
+  "encounterType": "73879625-8c4e-487f-8835-202ce89659f4",
+  "encounter": "TB DOT Encounter (Followup)",
+  "uuid": "f1d6537e-c57d-402d-b861-f708935b97ac",
+  "processor": "EncounterFormProcessor",
+  "published": true,
+  "retired": false,
+  "pages": [
+    {
+      "label": "DOT",
+      "sections": [
+        {
+          "label": "Appointment",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Date of DOT report",
+              "type": "obs",
+              "id": "date-of-dot-report",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "a6903fa4-3085-4070-baa2-0f811235c535",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "Next date of DOT appointment",
+              "type": "obs",
+              "id": "next-date-of-dot-appointment",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "2377dfda-b713-48da-9ce2-b9cc214a5ece",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "No. of days when patient was directly observed (in hospital or by DOT Nurse)",
+              "type": "obs",
+              "id": "number-of-days-under-direct-observation",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "814bb92c-ee21-4d0c-94f3-7084b68c9212",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "No. days of incomplete doses",
+              "type": "obs",
+              "id": "number-of-days-of-incomplete-doses",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "9e65437f-0bba-48a9-b70f-35ab479bc561",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "No. of days electronic message notifications of drug refills were received",
+              "type": "obs",
+              "id": "number-of-days-of-electronic-notifications-of-drug-refills-received",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "98acf275-a466-4386-a6bd-01615db35d40",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "No. of days of video observed therapy",
+              "type": "obs",
+              "id": "number-of-days-video-observed-therapy",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "30ecb9a1-11e5-4be5-b2b5-a6d0e071c2eb",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "No. of days when DOT was not supervised",
+              "type": "obs",
+              "id": "number-of-days-when-dot-was-not-supervised",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "9329109d-b4a0-4050-a1d1-acff1bdf50a7",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "No. of days when doses were taken under observation of a treatment supporter",
+              "type": "obs",
+              "id": "number-of-days-when-doses-were-taken-under-observation-of-a-treatment-supporter",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "8e2718c8-f69b-4d93-bd1b-b6157e68f6b2",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            },
+            {
+              "label": "No. of days when drugs were not taken",
+              "type": "obs",
+              "id": "number-of-days-when-drugs-were-not-taken",
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "b5c36ea3-3f9f-4153-a2ab-2520f6060e32",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "referencedForms": []
+}
