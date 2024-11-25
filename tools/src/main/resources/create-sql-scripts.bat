@@ -1,1 +1,0 @@
-@rem build the script files on Windows
