@@ -7,7 +7,7 @@
   <parent>
     <groupId>org.openmrs</groupId>
     <artifactId>distro-emr</artifactId>
-    <version>4.0.3-SNAPSHOT</version>
+    <version>4.0.4-SNAPSHOT</version>
   </parent>
 
   <artifactId>ugandaemr-distro</artifactId>
@@ -38,7 +38,7 @@
     <bahmniappointmentVersion>1.6.0</bahmniappointmentVersion>
     <bedmanagementVersion>6.0.0</bedmanagementVersion>
     <calculationVersion>1.3.0</calculationVersion>
-    <coreappsVersion>1.39.0</coreappsVersion>
+    <coreappsVersion>1.40.0</coreappsVersion>
     <databaseBackupVersion>1.3.0</databaseBackupVersion>
     <dataEntryStatisticsVersion>1.8.0</dataEntryStatisticsVersion>
     <dataexchangeVersion>1.3.8</dataexchangeVersion>
@@ -69,7 +69,7 @@
     <registrationcoreVersion>1.11.0</registrationcoreVersion>
     <reportingRestVersion>1.14.0</reportingRestVersion>
     <reportingVersion>1.26.0</reportingVersion>
-    <reportingCompatibilityVersion>2.0.9</reportingCompatibilityVersion>
+    <reportingCompatibilityVersion>2.0.8</reportingCompatibilityVersion>
     <reportingUIVersion>1.8.0</reportingUIVersion>
     <serializationxstreamVersion>0.2.16</serializationxstreamVersion>
     <uicommonsVersion>2.19.0</uicommonsVersion>
@@ -337,12 +337,6 @@
       <scope>test</scope>
     </dependency>
 
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>reportingcompatibility-api</artifactId>
-      <version>${reportingCompatibilityVersion}</version>
-      <scope>test</scope>
-    </dependency>
 
     <dependency>
       <groupId>org.openmrs.module</groupId>

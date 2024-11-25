@@ -63,4 +63,5 @@ services:
       MYSQL_PASSWORD: ${OPENMRS_DB_PASSWORD:-openmrs}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-openmrs}
     volumes:
-      - /Users/jaba/Documents/projects/openmrs/grrh/db:/docker-entrypoint-initdb.d
+      - ./db:/docker-entrypoint-initdb.d
+      
