@@ -3,9 +3,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.openmrs</groupId>
+    <groupId>org.openmrs.module</groupId>
     <artifactId>distro-emr</artifactId>
-    <version>4.0.4-SNAPSHOT</version>
+    <version>4.0.3</version>
   </parent>
 
   <artifactId>ugandaemr-frontend</artifactId>
