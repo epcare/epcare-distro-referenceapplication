@@ -11,7 +11,7 @@ services:
       - "80:80"
 
   frontend:
-    image: openmrs/openmrs-reference-application-3-frontend:${TAG:-qa}
+    image: jabahum/ugandaemr-frontend:latest
     restart: "unless-stopped"
     environment:
       SPA_PATH: /openmrs/spa
@@ -25,14 +25,14 @@ services:
       - backend
 
   backend:
-    image: openmrs/openmrs-reference-application-3-backend:${TAG:-qa}
+    image: jabahum/ugandaemr-distro:latest
     restart: "unless-stopped"
     depends_on:
       - db
     environment:
       OMRS_CONFIG_MODULE_WEB_ADMIN: "true"
       OMRS_CONFIG_AUTO_UPDATE_DATABASE: "true"
-      OMRS_CONFIG_CREATE_TABLES: "true"
+      OMRS_CONFIG_CREATE_TABLES: "false"
       OMRS_CONFIG_CONNECTION_SERVER: db
       OMRS_CONFIG_CONNECTION_DATABASE: openmrs
       OMRS_CONFIG_CONNECTION_USERNAME: ${OPENMRS_DB_USER:-openmrs}
