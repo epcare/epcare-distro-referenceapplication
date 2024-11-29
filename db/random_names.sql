@@ -1,33 +1,35 @@
 DROP PROCEDURE IF EXISTS `generateRandomNames`;
 
 DROP FUNCTION IF EXISTS openmrs.randomString;
-CREATE DEFINER=`openmrs`@`localhost` FUNCTION `randomString`($length int) RETURNS varchar(128) CHARSET utf8
+
+CREATE FUNCTION `randomString`(length INT) RETURNS VARCHAR(128) CHARSET utf8
   BEGIN
+    DECLARE chars VARCHAR(36) DEFAULT '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    DECLARE charLen INT DEFAULT LENGTH(chars);
+    DECLARE randomString VARCHAR(128) DEFAULT '';
 
-    SET @chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    SET @charLen = length(@chars);
-
-    SET @randomString = '';
-
-    WHILE length(@randomString) < $length DO
-      SET @randomString = concat(@randomString, substring(@chars,CEILING(RAND() * @charLen),1));
+    WHILE LENGTH(randomString) < length DO
+      SET randomString = CONCAT(randomString, SUBSTRING(chars, CEILING(RAND() * charLen), 1));
     END WHILE;
 
-    RETURN @randomString ;
+    RETURN randomString;
   END;
 
 
+
 DELIMITER $$
-CREATE DEFINER=`openmrs`@`localhost` PROCEDURE `generateRandomNames`()
+
+CREATE PROCEDURE `generateRandomNames`()
   BEGIN
+    -- Drop the table if it exists
+    DROP TABLE IF EXISTS `names`;
 
-    DROP  table if exists names ;
-
+    -- Create the `names` table
     CREATE TABLE `names` (
-      `Female1` varchar(255) DEFAULT NULL,
-      `Female2` varchar(255) DEFAULT NULL,
-      `Male1` varchar(255) DEFAULT NULL,
-      `Male2` varchar(255) DEFAULT NULL
+      `Female1` VARCHAR(255),
+      `Female2` VARCHAR(255),
+      `Male1` VARCHAR(255),
+      `Male2` VARCHAR(255)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
