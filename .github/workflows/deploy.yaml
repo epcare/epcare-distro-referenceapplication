@@ -1,4 +1,4 @@
-name: Deploy UgandaEMR to server
+name: Deploy UgandaEMR to Server
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
 
     steps:
       # Step 1: Checkout the repository
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v3
 
       # Step 2: Build and push Docker image to Docker Hub
@@ -21,26 +21,31 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and push Docker image
+      - name: Build and Push Docker Image
         run: |
-          docker build --no-cache -t ${{secrets.DOCKER_USERNAME}}/ugandaemr-distro:$(git rev-parse --short HEAD) .
-          docker tag ${{secrets.DOCKER_USERNAME}}/ugandaemr-distro:$(git rev-parse --short HEAD) ${{secrets.DOCKER_USERNAME}}/ugandaemr-distro
-          docker push ${{secrets.DOCKER_USERNAME}}/ugandaemr-distro:$(git rev-parse --short HEAD)
-          docker push ${{secrets.DOCKER_USERNAME}}/ugandaemr-distro:latest
+          IMAGE_NAME=${{ secrets.DOCKER_USERNAME }}/ugandaemr-distro
+          IMAGE_TAG=$(git rev-parse --short HEAD)
+
+          # Build image without cache
+          docker build --no-cache -t "$IMAGE_NAME:$IMAGE_TAG" .
+
+          # Tag the latest version
+          docker tag "$IMAGE_NAME:$IMAGE_TAG" "$IMAGE_NAME:latest"
+
+          # Push both tagged and latest versions
+          docker push "$IMAGE_NAME:$IMAGE_TAG"
+          docker push "$IMAGE_NAME:latest"
 
       # Step 3: Sync docker-compose file to the server
-      - name: Sync docker-compose.yml to server
+      - name: Sync docker-compose.yml to Server
         run: |
-          rsync -avz -e "ssh -o StrictHostKeyChecking=no" docker-compose.yml ${{secrets.USER}}@${{ secrets.SERVER_IP }}:/home/ugandaemr
-
+          rsync -avz -e "ssh -o StrictHostKeyChecking=no" docker-compose.yml "${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/home/ugandaemr"
 
       # Step 4: SSH into server, pull latest image, and restart services
-      - name: Update and restart services on the server
+      - name: Update and Restart Services on Server
         run: |
-          ssh -o StrictHostKeyChecking=no ${{secrets.USER}}@${{ secrets.SERVER_IP }} << 'EOF'
+          ssh -o StrictHostKeyChecking=no "${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}" << 'EOF'
             cd /home/ugandaemr
             docker-compose pull
             docker-compose up -d
           EOF
-        env:
-          DOCKER_HOST: "ssh://${{secrets.USER}}@${{ secrets.SERVER_IP }}"
