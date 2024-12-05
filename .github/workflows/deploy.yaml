@@ -39,13 +39,28 @@ jobs:
       # Step 3: Sync docker-compose file to the server
       - name: Sync docker-compose.yml to Server
         run: |
-          rsync -avz -e "ssh -o StrictHostKeyChecking=no" docker-compose.yml "${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/home/ugandaemr"
+            # Start the SSH agent
+            eval "$(ssh-agent -s)"
 
-      # Step 4: SSH into server, pull latest image, and restart services
+            # Add the private key from GitHub Secrets
+            echo "${{ secrets.SSH_PRIVATE_KEY }}" | ssh-add -
+
+            # Use rsync with the SSH key to transfer the file
+            rsync -avz -e "ssh -o StrictHostKeyChecking=no" docker-compose.yml "${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/home/ugandaemr"
+
+      # Step 4: SSH into server, pull the latest image, and restart services
       - name: Update and Restart Services on Server
         run: |
-          ssh -o StrictHostKeyChecking=no "${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}" << 'EOF'
-            cd /home/ugandaemr
-            docker-compose pull
-            docker-compose up -d
-          EOF
+            # Start the SSH agent
+            eval "$(ssh-agent -s)"
+
+            # Add the private key from GitHub Secrets
+            echo "${{ secrets.SSH_PRIVATE_KEY }}" | ssh-add -
+
+            # Connect to the server and execute commands
+            ssh -o StrictHostKeyChecking=no "${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}" << 'EOF'
+                cd /home/ugandaemr
+                docker-compose pull
+                docker-compose up -d
+            EOF
+
