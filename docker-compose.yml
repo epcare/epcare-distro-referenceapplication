@@ -23,6 +23,8 @@ services:
       timeout: 5s
     depends_on:
       - backend
+    networks:
+      - openmrs-network
 
   backend:
     image: jabahum/ugandaemr-distro:latest
@@ -42,6 +44,8 @@ services:
       timeout: 5s
     volumes:
       - openmrs-data:/openmrs/data
+    networks:
+      - openmrs-network
 
   # MariaDB
   db:
@@ -60,7 +64,13 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-openmrs}
     volumes:
       - db-data:/var/lib/mysql
+    networks:
+      - client-network
 
 volumes:
   openmrs-data: ~
   db-data: ~
+
+networks:
+  openmrs-network:
+    driver: bridge 
