@@ -52,7 +52,7 @@ jobs:
       # Step 4: Sync docker-compose.yml to the server
       - name: Sync docker-compose.yml to Server
         run: |
-          rsync -avz -e "ssh" docker-compose.yml "${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/home/ugandaemr"
+          rsync -avz -e ssh docker-compose.yml "${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/home/ugandaemr"
 
       # Step 5: SSH into the server, pull the latest image, and restart services
       - name: Update and Restart Services on Server
