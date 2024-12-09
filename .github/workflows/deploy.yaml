@@ -46,17 +46,18 @@ jobs:
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: |
+            github.com
             ${{ secrets.SERVER_IP }}
 
       # Step 4: Sync docker-compose.yml to the server
       - name: Sync docker-compose.yml to Server
         run: |
-          rsync -avz -e "ssh -o StrictHostKeyChecking=no" docker-compose.yml "${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/home/ugandaemr"
+          rsync -avz -e "ssh" docker-compose.yml "${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/home/ugandaemr"
 
       # Step 5: SSH into the server, pull the latest image, and restart services
       - name: Update and Restart Services on Server
         run: |
-          ssh -o StrictHostKeyChecking=no "${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}" << 'EOF'
+          ssh "${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}" << 'EOF'
             cd /home/ugandaemr
             docker-compose pull
             docker-compose up -d
