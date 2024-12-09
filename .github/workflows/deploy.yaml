@@ -46,7 +46,7 @@ jobs:
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: |
-            github.com
+            ${{secrets.SSH_KNOWN_HOSTS}}
             ${{ secrets.SERVER_IP }}
 
       # Step 4: Sync docker-compose.yml to the server
