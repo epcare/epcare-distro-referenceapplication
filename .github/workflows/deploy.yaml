@@ -45,9 +45,7 @@ jobs:
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          known_hosts: |
-            ${{secrets.SSH_KNOWN_HOSTS}}
-            ${{ secrets.SERVER_IP }}
+          known_hosts: ${{secrets.SSH_KNOWN_HOSTS}}
 
       # Step 4: Sync docker-compose.yml to the server
       - name: Sync docker-compose.yml to Server
