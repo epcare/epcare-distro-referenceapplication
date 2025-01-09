@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   gateway:
-    image: openmrs/openmrs-reference-application-3-gateway:${TAG:-qa}
+    image: openmrs/openmrs-reference-application-3-gateway:${TAG:-nightly}
     restart: "unless-stopped"
     depends_on:
       - frontend
@@ -44,6 +44,8 @@ services:
       timeout: 5s
     volumes:
       - openmrs-data:/openmrs/data
+      - ./csrfguard.properties:/openmrs/data/csrfguard.properties
+
     networks:
       - openmrs-network
 
@@ -64,6 +66,8 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-openmrs}
     volumes:
       - db-data:/var/lib/mysql
+      - ./db:/docker-entrypoint-initdb.d
+
 
 volumes:
   openmrs-data: ~
