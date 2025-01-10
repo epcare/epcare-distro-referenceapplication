@@ -9,6 +9,8 @@ services:
       - backend
     ports:
       - "80:80"
+    networks:
+      - openmrs-network
 
   frontend:
     image: jabahum/ugandaemr-frontend:latest
@@ -45,7 +47,6 @@ services:
     volumes:
       - openmrs-data:/openmrs/data
       - ./csrfguard.properties:/openmrs/data/csrfguard.properties
-
     networks:
       - openmrs-network
 
@@ -67,6 +68,8 @@ services:
     volumes:
       - db-data:/var/lib/mysql
       - ./db:/docker-entrypoint-initdb.d
+    networks:
+      - openmrs-network
 
 
 volumes:
