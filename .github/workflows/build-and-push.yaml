@@ -29,7 +29,6 @@ jobs:
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/ugandaemr-distro:latest
             ${{ secrets.DOCKER_USERNAME }}/ugandaemr-distro:${{ github.sha }}
-          platforms: linux/amd64,linux/arm64
           push: true
 
       # Step 4: Build and Push Frontend Docker Image
@@ -41,5 +40,4 @@ jobs:
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/ugandaemr-frontend:latest
             ${{ secrets.DOCKER_USERNAME }}/ugandaemr-distro:${{ github.sha }}
-          platforms: linux/amd64,linux/arm64
           push: true
