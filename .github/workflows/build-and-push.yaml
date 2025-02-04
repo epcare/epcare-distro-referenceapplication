@@ -1,4 +1,4 @@
-name: Build and Push UgandaEMR Docker Image
+name: Build and Push UgandaEMR Docker Images
 
 on:
   push:
@@ -8,7 +8,6 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-
     steps:
       # Step 1: Checkout the repository
       - name: Checkout Code
@@ -21,22 +20,20 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # Step 3: Build and Push Docker Image
-      - name: Build and Push Docker Image
-        id: docker
-        run: |
-          IMAGE_NAME=${{ secrets.DOCKER_USERNAME }}/ugandaemr-distro
-          IMAGE_TAG=$(git rev-parse --short HEAD)
+      # Step 3: Build and Push Backend Docker Image
+      - name: Build and Push Backend Docker Image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./Dockerfile  # Adjust if your Dockerfile is in a subdirectory
+          tags: ${{ secrets.DOCKER_USERNAME }}/ugandaemr-distro:latest
+          push: true
 
-          # Build image without cache
-          docker build --no-cache -t "$IMAGE_NAME:$IMAGE_TAG" .
-
-          # Tag the latest version
-          docker tag "$IMAGE_NAME:$IMAGE_TAG" "$IMAGE_NAME:latest"
-
-          # Push both tagged and latest versions
-          docker push "$IMAGE_NAME:$IMAGE_TAG"
-          docker push "$IMAGE_NAME:latest"
-
-          # Output the tag for the next steps
-          echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
+      # Step 4: Build and Push Frontend Docker Image
+      - name: Build and Push Frontend Docker Image
+        uses: docker/build-push-action@v4
+        with:
+          context: ./frontend  # Adjust to your frontend directory
+          file: ./frontend/Dockerfile  # Adjust if your Dockerfile is in a subdirectory
+          tags: ${{ secrets.DOCKER_USERNAME }}/ugandaemr-frontend:latest
+          push: true
