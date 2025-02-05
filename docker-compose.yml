@@ -46,7 +46,6 @@ services:
       timeout: 5s
     volumes:
       - openmrs-data:/openmrs/data
-      - ./csrfguard.properties:/openmrs/data/csrfguard.properties
     networks:
       - openmrs-network
 
@@ -67,7 +66,6 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-openmrs}
     volumes:
       - db-data:/var/lib/mysql
-      - ./db:/docker-entrypoint-initdb.d
     networks:
       - openmrs-network
 

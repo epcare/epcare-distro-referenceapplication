@@ -18,16 +18,11 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
 
-      # Step 2: Sync docker-compose.yml to the server
-      - name: Sync docker-compose.yml to Server
-        run: |
-          rsync -avz -e ssh docker-compose.yml "${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/home/ugandaemr"
-
-      # Step 3: SSH into the server, pull the latest image, and restart services
+      # Step 2: SSH into the server, pull the latest image, and restart services
       - name: Update and Restart Services on Server
         run: |
           ssh "${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}" << 'EOF'
-            cd /home/ugandaemr
-            docker-compose pull
-            docker-compose up -d
+            cd "${{ secrets.DEPLOY_FOLDER }}"
+            ./restart
           EOF
+
