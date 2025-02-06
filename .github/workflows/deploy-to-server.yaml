@@ -21,8 +21,11 @@ jobs:
       # Step 2: SSH into the server, pull the latest image, and restart services
       - name: Update and Restart Services on Server
         run: |
+          echo "Testing SSH connectivity..."
+          ssh -o StrictHostKeyChecking=no "${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}" "echo Connected"
+          
+          echo "Updating and restarting services..."
           ssh "${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}" << 'EOF'
             cd "${{ secrets.DEPLOY_FOLDER }}"
             ./restart
           EOF
-
