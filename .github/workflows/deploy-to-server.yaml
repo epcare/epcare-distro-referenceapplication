@@ -2,7 +2,7 @@ name: Deploy UgandaEMR to Server
 
 on:
   workflow_run:
-    workflows: ["Build and Push UgandaEMR Docker Image"]
+    workflows: ["Build and Push UgandaEMR Docker Images"]
     types:
       - completed
 
