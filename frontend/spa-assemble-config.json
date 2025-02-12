@@ -32,7 +32,8 @@
     "@ugandaemr/esm-patient-registration-app": "next",
     "@ugandaemr/esm-ugandaemr-app": "next",
     "@ugandaemr/esm-primary-navigation-app": "next",
-    "@ugandaemr/esm-patient-flags-app": "next"
+    "@ugandaemr/esm-patient-flags-app": "next",
+    "@ugandaemr/esm-laboratory-management-app":"next"
   },
   "excludedFrontendModules": []
 }
