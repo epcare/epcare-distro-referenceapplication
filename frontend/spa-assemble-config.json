@@ -25,7 +25,6 @@
     "@openmrs/esm-patient-programs-app": "next",
     "@ugandaemr/esm-login-app": "next",
     "@ugandaemr/esm-patient-queues-app": "next",
-    "@ugandaemr/esm-laboratory-app": "next",
     "@ugandaemr/esm-data-visualizer-app": "next",
     "@ugandaemr/esm-ugandaemr-exchange-app": "next",
     "@ugandaemr/esm-care-panel-app": "next",
