@@ -149,26 +149,33 @@
             "layoutMode": "anchored",
             "hideDashboardTitle": true
           },
-
           "nav-group#HIVPreventionServices": {
             "title": "HIV Prevention Services",
             "slotName": "hiv-prevention-services-group-slot",
-            "isExpanded": true
+            "Display conditions": {
+              "privileges": ["Manage HIV Prevention Services"]
+            }
           },
           "nav-group#HIVCareAndTreatment": {
             "title": "HIV Care and Treatment",
             "slotName": "hiv-care-and-treatment-group-slot",
-            "isExpanded": false
+            "Display conditions": {
+              "privileges": ["Manage HIV Care and Treatment"]
+            }
           },
           "nav-group#TBProgram": {
             "title": "TB Program",
             "slotName": "tb-program-treatment-group-slot",
-            "isExpanded": false
+            "Display conditions": {
+              "privileges": ["Manage TB Program"]
+            }
           },
           "nav-group#EIDProgram": {
             "title": "EID Program",
             "slotName": "eid-program-treatment-group-slot",
-            "isExpanded": false
+            "Display conditions": {
+              "privileges": ["Manage EID Program"]
+            }
           }
         }
       },
@@ -178,7 +185,8 @@
           "dashboard#hct-patient-summary",
           "dashboard#hct-counselling",
           "dashboard#hct-treatment-regimen",
-          "dashboard#hct-family-tracking"
+          "dashboard#hct-family-tracking",
+          "dashboard#hct-patient-transfers"
         ],
         "configure": {
           "dashboard#hct-patient-summary": {
@@ -215,16 +223,18 @@
             "slot": "hct-family-tracking-dashboard-slot",
             "layoutMode": "anchored",
             "hideDashboardTitle": true
+          },
+          "dashboard#hct-patient-transfers": {
+            "title": "Patient Transfers",
+            "path": "hct-patient-transfers",
+            "slot": "hct-patient-transfers-dashboard-slot",
+            "layoutMode": "anchored",
+            "hideDashboardTitle": true
           }
         }
       },
-
       "hiv-prevention-services-group-slot": {
-        "add": [
-          "dashboard#hps-hts",
-          "dashboard#hps-prep-card",
-          "dashboard#hps-pep-care-card"
-        ],
+        "add": ["dashboard#hps-hts", "dashboard#hps-vmmc"],
         "configure": {
           "dashboard#hps-hts": {
             "title": "HTS",
@@ -233,26 +243,46 @@
             "layoutMode": "anchored",
             "hideDashboardTitle": true
           },
-          "dashboard#hps-prep-card": {
-            "title": "Prep Care Card",
-            "path": "hps-prep-care-card",
-            "slot": "hps-prep-care-card-dashboard-slot",
-            "layoutMode": "anchored",
-            "hideDashboardTitle": true
-          },
-          "dashboard#hps-pep-care-card": {
-            "title": "Pep Care Card",
-            "path": "hps-pep-care-card",
-            "slot": "hps-pep-care-card-dashboard-slot",
+          "dashboard#hps-vmmc": {
+            "title": "VMMC",
+            "path": "hps-vmmc",
+            "slot": "hps-vmmc-dashboard-slot",
             "layoutMode": "anchored",
             "hideDashboardTitle": true
           }
         }
       },
-
-      "tb-program-treatment-group-slot": {},
-      "eid-program-treatment-group-slot": {},
-
+      "tb-program-treatment-group-slot": {
+        "add": ["dashboard#tb-program-ds", "dashboard#tb-program-dr"],
+        "configure": {
+          "dashboard#tb-program-ds": {
+            "title": "DS TB",
+            "path": "DS TB",
+            "slot": "tb-program-ds-dashboard-slot",
+            "layoutMode": "anchored",
+            "hideDashboardTitle": true
+          },
+          "dashboard#tb-program-dr": {
+            "title": "DR TB",
+            "path": "tb-program-dr",
+            "slot": "tb-program-dr-dashboard-slot",
+            "layoutMode": "anchored",
+            "hideDashboardTitle": true
+          }
+        }
+      },
+      "eid-program-treatment-group-slot": {
+        "add": ["dashboard#eid-program"],
+        "configure": {
+          "dashboard#eid-program": {
+            "title": "EID",
+            "path": "EID",
+            "slot": "eid-program-dashboard-slot",
+            "layoutMode": "anchored",
+            "hideDashboardTitle": true
+          }
+        }
+      },
       "clinical-views-group-slot": {
         "add": ["encounter-tile"],
         "configure": {
@@ -402,17 +432,16 @@
           }
         }
       },
-
       "hct-treatment-dashboard-slot": {
         "add": ["encounter-list"],
         "configure": {
           "encounter-list": {
             "tabDefinitions": [
               {
-                "tabName": "Summary Page",
+                "tabName": "Summary Page (Enrollment)",
                 "hasFilter": true,
-                "headerTitle": "Summary Page",
-                "displayText": "Summary Page",
+                "headerTitle": "Summary Page(Enrollment)",
+                "displayText": "Summary Page(Enrollment)",
                 "encounterType": "8d5b2be0-c2cc-11de-8d13-0010c6dffd0f",
                 "columns": [
                   {
@@ -446,7 +475,6 @@
                     "title": "Treatment Interruptions",
                     "concept": "treatmentInterruptionsConceptUuid"
                   },
-
                   {
                     "id": "baselineARVRegimen",
                     "title": "Baseline ARV Regimen",
@@ -477,7 +505,6 @@
                     "title": "Baseline PMTCT",
                     "concept": "baselinePMTCTConceptUuid"
                   },
-
                   {
                     "id": "actions",
                     "title": "actionsTitle",
@@ -541,7 +568,6 @@
                     "title": "HPV Status",
                     "concept": "hpvStatusConceptUuid"
                   },
-
                   {
                     "id": "dateOfsampleCollection",
                     "title": "Date of Sample Colection (HIV Drug Resistance)",
@@ -557,7 +583,6 @@
                     "title": "DR Status (HIV Drug Resistance)",
                     "concept": "drStatusConceptUuid"
                   },
-
                   {
                     "id": "actions",
                     "title": "actionsTitle",
@@ -589,7 +614,7 @@
         }
       },
       "hct-patient-summary-dashboard-slot": {
-        "add": ["encounter-tile"],
+        "add": ["clinical-views-summary"],
         "configure": {
           "encounter-tile": {
             "tileDefinitions": [
@@ -737,7 +762,6 @@
           }
         }
       },
-
       "hct-counselling-dashboard-slot": {
         "add": ["encounter-list"],
         "configure": {
@@ -845,7 +869,6 @@
           }
         }
       },
-
       "hct-treatment-regimen-dashboard-slot": {
         "add": ["encounter-list"],
         "configure": {
@@ -953,7 +976,6 @@
           }
         }
       },
-
       "hct-family-tracking-dashboard-slot": {
         "add": ["encounter-list"],
         "configure": {
@@ -986,13 +1008,11 @@
                     "title": "Member Relationship",
                     "concept": "164352AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                   },
-
                   {
                     "id": "memberEIDCare",
                     "title": "EID Care",
                     "concept": "eidCareConceptUuid"
                   },
-
                   {
                     "id": "memberStatus",
                     "title": "Member Status",
@@ -1048,7 +1068,113 @@
           }
         }
       },
-
+      "hct-patient-transfers-dashboard-slot": {
+        "add": ["encounter-list"],
+        "configure": {
+          "encounter-list": {
+            "tabDefinitions": [
+              {
+                "tabName": "Transfer In",
+                "hasFilter": true,
+                "headerTitle": "Transfer In",
+                "displayText": "Tranfer In",
+                "encounterType": "c11774c1-3b4a-4bdb-a847-6060895e006d",
+                "columns": [
+                  {
+                    "id": "substitutionDate",
+                    "isDate": true,
+                    "title": "Substitution Date",
+                    "concept": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "id": "New Regimen",
+                    "title": "New Regimen",
+                    "concept": "dd2b0b4d-30ab-102d-86b0-7a5022ba4115"
+                  },
+                  {
+                    "id": "reason",
+                    "title": "Reason",
+                    "concept": "dce0c977-30ab-102d-86b0-7a5022ba4115"
+                  },
+                  {
+                    "id": "actions",
+                    "title": "actionsTitle",
+                    "actionOptions": [
+                      {
+                        "formName": "ART Regimen Change",
+                        "label": "View Details",
+                        "mode": "view"
+                      },
+                      {
+                        "formName": "ART Regimen Change",
+                        "label": "EditForm",
+                        "mode": "edit"
+                      }
+                    ]
+                  }
+                ],
+                "launchOptions": {
+                  "displayText": "Add"
+                },
+                "formList": [
+                  {
+                    "uuid": "53a3850c-855a-11eb-8dcd-0242ac130003"
+                  }
+                ]
+              },
+              {
+                "tabName": "Transfer Out",
+                "hasFilter": true,
+                "headerTitle": "Transfer Out",
+                "displayText": "Transfer Out",
+                "encounterType": "c11774c1-3b4a-4bdb-a847-6060895e006d",
+                "columns": [
+                  {
+                    "id": "substitutionDate",
+                    "isDate": true,
+                    "title": "Substitution Date",
+                    "concept": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "id": "New Regimen",
+                    "title": "New Regimen",
+                    "concept": "dd2b0b4d-30ab-102d-86b0-7a5022ba4115"
+                  },
+                  {
+                    "id": "reason",
+                    "title": "Reason",
+                    "concept": "dce0c977-30ab-102d-86b0-7a5022ba4115"
+                  },
+                  {
+                    "id": "actions",
+                    "title": "actionsTitle",
+                    "actionOptions": [
+                      {
+                        "formName": "ART Regimen Change",
+                        "label": "View Details",
+                        "mode": "view"
+                      },
+                      {
+                        "formName": "ART Regimen Change",
+                        "label": "EditForm",
+                        "mode": "edit"
+                      }
+                    ]
+                  }
+                ],
+                "launchOptions": {
+                  "displayText": "Add"
+                },
+                "formList": [
+                  {
+                    "uuid": "53a3850c-855a-11eb-8dcd-0242ac130003"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
       "hps-hts-dashboard-slot": {
         "add": ["encounter-list"],
         "configure": {
@@ -1105,16 +1231,115 @@
           }
         }
       },
-
       "hps-prep-care-card-dashboard-slot": {
         "add": ["encounter-list"],
         "configure": {
           "encounter-list": {
             "tabDefinitions": [
               {
-                "tabName": "Prep Care Card",
-                "headerTitle": "Prep Care Card",
-                "displayText": "Prep Care Card",
+                "tabName": "Enrollment",
+                "headerTitle": "Enrollmment",
+                "displayText": "Enrollmment",
+                "encounterType": "570e9e42-4306-41dc-9bf8-634bbc70a524",
+                "columns": [
+                  {
+                    "id": "contactDate",
+                    "isDate": true,
+                    "title": "contactDateTitle",
+                    "concept": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "id": "contactMethod",
+                    "title": "contactMethodTitle",
+                    "concept": "166456AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "id": "contactOutcome",
+                    "title": "contactOutcomeTitle",
+                    "concept": "167011AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "id": "actions",
+                    "title": "actionsTitle",
+                    "actionOptions": [
+                      {
+                        "formName": "Contact Tracing Form",
+                        "package": "hiv-care-treatment",
+                        "label": "View Details",
+                        "mode": "view"
+                      },
+                      {
+                        "formName": "Contact Tracing Form",
+                        "package": "hiv-care-treatment",
+                        "label": "EditForm",
+                        "mode": "edit"
+                      }
+                    ]
+                  }
+                ],
+                "launchOptions": {
+                  "displayText": "add"
+                },
+                "formList": [
+                  {
+                    "uuid": "94a911a8-8da1-3c12-b696-2f3e78c2e87c"
+                  }
+                ]
+              },
+              {
+                "tabName": "Follow Up",
+                "headerTitle": "Follow Up",
+                "displayText": "Follow Up",
+                "encounterType": "570e9e42-4306-41dc-9bf8-634bbc70a524",
+                "columns": [
+                  {
+                    "id": "contactDate",
+                    "isDate": true,
+                    "title": "contactDateTitle",
+                    "concept": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "id": "contactMethod",
+                    "title": "contactMethodTitle",
+                    "concept": "166456AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "id": "contactOutcome",
+                    "title": "contactOutcomeTitle",
+                    "concept": "167011AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "id": "actions",
+                    "title": "actionsTitle",
+                    "actionOptions": [
+                      {
+                        "formName": "Contact Tracing Form",
+                        "package": "hiv-care-treatment",
+                        "label": "View Details",
+                        "mode": "view"
+                      },
+                      {
+                        "formName": "Contact Tracing Form",
+                        "package": "hiv-care-treatment",
+                        "label": "EditForm",
+                        "mode": "edit"
+                      }
+                    ]
+                  }
+                ],
+                "launchOptions": {
+                  "displayText": "add"
+                },
+                "formList": [
+                  {
+                    "uuid": "94a911a8-8da1-3c12-b696-2f3e78c2e87c"
+                  }
+                ]
+              },
+              {
+                "tabName": "Screening",
+                "headerTitle": "Screening",
+                "displayText": "Screening",
                 "encounterType": "570e9e42-4306-41dc-9bf8-634bbc70a524",
                 "columns": [
                   {
@@ -1165,14 +1390,13 @@
           }
         }
       },
-
       "hps-pep-care-card-dashboard-slot": {
         "add": ["encounter-list"],
         "configure": {
           "encounter-list": {
             "tabDefinitions": [
               {
-                "tabName": "Pep Care Card",
+                "tabName": "Enrollment",
                 "headerTitle": "Pep Care Card",
                 "displayText": "Pep Care Card",
                 "encounterType": "570e9e42-4306-41dc-9bf8-634bbc70a524",
@@ -1218,6 +1442,541 @@
                 "formList": [
                   {
                     "uuid": "94a911a8-8da1-3c12-b696-2f3e78c2e87c"
+                  }
+                ]
+              },
+              {
+                "tabName": "Follow Up",
+                "headerTitle": "Pep Care Card",
+                "displayText": "Pep Care Card",
+                "encounterType": "570e9e42-4306-41dc-9bf8-634bbc70a524",
+                "columns": [
+                  {
+                    "id": "contactDate",
+                    "isDate": true,
+                    "title": "contactDateTitle",
+                    "concept": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "id": "contactMethod",
+                    "title": "contactMethodTitle",
+                    "concept": "166456AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "id": "contactOutcome",
+                    "title": "contactOutcomeTitle",
+                    "concept": "167011AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "id": "actions",
+                    "title": "actionsTitle",
+                    "actionOptions": [
+                      {
+                        "formName": "Contact Tracing Form",
+                        "package": "hiv-care-treatment",
+                        "label": "View Details",
+                        "mode": "view"
+                      },
+                      {
+                        "formName": "Contact Tracing Form",
+                        "package": "hiv-care-treatment",
+                        "label": "EditForm",
+                        "mode": "edit"
+                      }
+                    ]
+                  }
+                ],
+                "launchOptions": {
+                  "displayText": "add"
+                },
+                "formList": [
+                  {
+                    "uuid": "94a911a8-8da1-3c12-b696-2f3e78c2e87c"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "hps-gender-based-violence-dashboard-slot": {
+        "add": ["encounter-list"],
+        "configure": {
+          "encounter-list": {
+            "tabDefinitions": [
+              {
+                "tabName": "Gender Based Violence",
+                "hasFilter": true,
+                "headerTitle": "Gender Based Violence",
+                "displayText": "Gender Based Violence",
+                "columns": [
+                  {
+                    "id": "substitutionDate",
+                    "isDate": true,
+                    "title": "Substitution Date",
+                    "concept": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "id": "New Regimen",
+                    "title": "New Regimen",
+                    "concept": "dd2b0b4d-30ab-102d-86b0-7a5022ba4115"
+                  },
+                  {
+                    "id": "reason",
+                    "title": "Reason",
+                    "concept": "dce0c977-30ab-102d-86b0-7a5022ba4115"
+                  },
+                  {
+                    "id": "actions",
+                    "title": "actionsTitle",
+                    "actionOptions": [
+                      {
+                        "formName": "ART Regimen Change",
+                        "label": "View Details",
+                        "mode": "view"
+                      },
+                      {
+                        "formName": "ART Regimen Change",
+                        "label": "EditForm",
+                        "mode": "edit"
+                      }
+                    ]
+                  }
+                ],
+                "launchOptions": {
+                  "displayText": "Add"
+                },
+                "formList": [
+                  {
+                    "uuid": "53a3850c-855a-11eb-8dcd-0242ac130003"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "hps-vmmc-dashboard-slot": {
+        "add": ["encounter-list"],
+        "configure": {
+          "encounter-list": {
+            "tabDefinitions": [
+              {
+                "tabName": "Enrollmment (Session 1)",
+                "hasFilter": true,
+                "headerTitle": "Enrollmment (Session 1)",
+                "displayText": "Enrollmment (Session 1)",
+                "encounterType": "244da86d-f80e-48fe-aba9-067f241905ee",
+                "columns": [
+                  {
+                    "id": "substitutionDate",
+                    "isDate": true,
+                    "title": "Substitution Date",
+                    "concept": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "id": "New Regimen",
+                    "title": "New Regimen",
+                    "concept": "dd2b0b4d-30ab-102d-86b0-7a5022ba4115"
+                  },
+                  {
+                    "id": "reason",
+                    "title": "Reason",
+                    "concept": "dce0c977-30ab-102d-86b0-7a5022ba4115"
+                  },
+                  {
+                    "id": "actions",
+                    "title": "actionsTitle",
+                    "actionOptions": [
+                      {
+                        "formName": "HMIS ACP 029: Safe Male Circumcision Client Form",
+                        "label": "View Details",
+                        "mode": "view"
+                      },
+                      {
+                        "formName": "HMIS ACP 029: Safe Male Circumcision Client Form",
+                        "label": "EditForm",
+                        "mode": "edit"
+                      }
+                    ]
+                  }
+                ],
+                "launchOptions": {
+                  "displayText": "Add"
+                },
+                "formList": [
+                  {
+                    "uuid": "9d9193e7-b038-4c44-a7a3-830baa288565"
+                  }
+                ]
+              },
+              {
+                "tabName": "Follow Up",
+                "hasFilter": true,
+                "headerTitle": "Follow Up",
+                "displayText": "Follow Up",
+                "encounterType": "d0f9e0b7-f336-43bd-bf50-0a7243857fa6",
+                "columns": [
+                  {
+                    "id": "substitutionDate",
+                    "isDate": true,
+                    "title": "Substitution Date",
+                    "concept": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "id": "New Regimen",
+                    "title": "New Regimen",
+                    "concept": "dd2b0b4d-30ab-102d-86b0-7a5022ba4115"
+                  },
+                  {
+                    "id": "reason",
+                    "title": "Reason",
+                    "concept": "dce0c977-30ab-102d-86b0-7a5022ba4115"
+                  },
+                  {
+                    "id": "actions",
+                    "title": "actionsTitle",
+                    "actionOptions": [
+                      {
+                        "formName": "HMIS ACP 029: Safe Male Circumcision Client Card Follow up",
+                        "label": "View Details",
+                        "mode": "view"
+                      },
+                      {
+                        "formName": "HMIS ACP 029: Safe Male Circumcision Client Card Follow up",
+                        "label": "EditForm",
+                        "mode": "edit"
+                      }
+                    ]
+                  }
+                ],
+                "launchOptions": {
+                  "displayText": "Add"
+                },
+                "formList": [
+                  {
+                    "uuid": "0292be15-3234-4b65-b5da-15a667da695f"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "tb-program-ds-dashboard-slot": {
+        "add": ["encounter-list"],
+        "configure": {
+          "encounter-list": {
+            "tabDefinitions": [
+              {
+                "tabName": "DS TB Enrollment",
+                "hasFilter": true,
+                "headerTitle": "DS TB Enrollment",
+                "displayText": "DS TB Enrollment",
+                "encounterType": "334bf97e-28e2-4a27-8727-a5ce31c7cd66",
+                "columns": [
+                  {
+                    "id": "substitutionDate",
+                    "isDate": true,
+                    "title": "Substitution Date",
+                    "concept": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "id": "New Regimen",
+                    "title": "New Regimen",
+                    "concept": "dd2b0b4d-30ab-102d-86b0-7a5022ba4115"
+                  },
+                  {
+                    "id": "reason",
+                    "title": "Reason",
+                    "concept": "dce0c977-30ab-102d-86b0-7a5022ba4115"
+                  },
+                  {
+                    "id": "actions",
+                    "title": "actionsTitle",
+                    "actionOptions": [
+                      {
+                        "formName": "DS TB: HMIS TB 003 - TB Client Card Enrollment Page",
+                        "label": "View Details",
+                        "mode": "view"
+                      },
+                      {
+                        "formName": "DS TB: HMIS TB 003 - TB Client Card Enrollment Page",
+                        "label": "EditForm",
+                        "mode": "edit"
+                      }
+                    ]
+                  }
+                ],
+                "launchOptions": {
+                  "displayText": "Add"
+                },
+                "formList": [
+                  {
+                    "uuid": "b00452b6-bb7c-11ea-b3de-0242ac130004"
+                  }
+                ]
+              },
+              {
+                "tabName": "DS TB Follow Up",
+                "hasFilter": true,
+                "headerTitle": "Follow Up",
+                "displayText": "Follow Up",
+                "encounterType": "455bad1f-5e97-4ee9-9558-ff1df8808732",
+                "columns": [
+                  {
+                    "id": "substitutionDate",
+                    "isDate": true,
+                    "title": "Substitution Date",
+                    "concept": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "id": "New Regimen",
+                    "title": "New Regimen",
+                    "concept": "dd2b0b4d-30ab-102d-86b0-7a5022ba4115"
+                  },
+                  {
+                    "id": "reason",
+                    "title": "Reason",
+                    "concept": "dce0c977-30ab-102d-86b0-7a5022ba4115"
+                  },
+                  {
+                    "id": "actions",
+                    "title": "actionsTitle",
+                    "actionOptions": [
+                      {
+                        "formName": "DS TB: HMIS TB 003 - TB Client Card Followup Section",
+                        "label": "View Details",
+                        "mode": "view"
+                      },
+                      {
+                        "formName": "DS TB: HMIS TB 003 - TB Client Card Followup Section",
+                        "label": "EditForm",
+                        "mode": "edit"
+                      }
+                    ]
+                  }
+                ],
+                "launchOptions": {
+                  "displayText": "Add"
+                },
+                "formList": [
+                  {
+                    "uuid": "0248cd00-bc53-11ea-b3de-0242ac130004"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "tb-program-dr-dashboard-slot": {
+        "add": ["encounter-list"],
+        "configure": {
+          "encounter-list": {
+            "tabDefinitions": [
+              {
+                "tabName": "DR TB Enrollment",
+                "hasFilter": true,
+                "headerTitle": "DR TB Enrollment",
+                "displayText": "DR TB Enrollment",
+                "encounterType": "0271ee3d-f274-49d1-b376-c842f075413f",
+                "columns": [
+                  {
+                    "id": "substitutionDate",
+                    "isDate": true,
+                    "title": "Substitution Date",
+                    "concept": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "id": "New Regimen",
+                    "title": "New Regimen",
+                    "concept": "dd2b0b4d-30ab-102d-86b0-7a5022ba4115"
+                  },
+                  {
+                    "id": "reason",
+                    "title": "Reason",
+                    "concept": "dce0c977-30ab-102d-86b0-7a5022ba4115"
+                  },
+                  {
+                    "id": "actions",
+                    "title": "actionsTitle",
+                    "actionOptions": [
+                      {
+                        "formName": "DR TB: HMIS TB 001 Second Line TB Treatment Card - Enrollment Page",
+                        "label": "View Details",
+                        "mode": "view"
+                      },
+                      {
+                        "formName": "DR TB: HMIS TB 001 Second Line TB Treatment Card - Enrollment Page",
+                        "label": "EditForm",
+                        "mode": "edit"
+                      }
+                    ]
+                  }
+                ],
+                "launchOptions": {
+                  "displayText": "Add"
+                },
+                "formList": [
+                  {
+                    "uuid": "4929f668-f8d0-11ea-adc1-0242ac120002"
+                  }
+                ]
+              },
+              {
+                "tabName": "DR TB Follow Up",
+                "hasFilter": true,
+                "headerTitle": "DR TB Follow Up",
+                "displayText": "DR TB Follow Up",
+                "encounterType": "41f8609d-e13b-4dff-8379-47ac5876512e",
+                "columns": [
+                  {
+                    "id": "substitutionDate",
+                    "isDate": true,
+                    "title": "Substitution Date",
+                    "concept": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "id": "New Regimen",
+                    "title": "New Regimen",
+                    "concept": "dd2b0b4d-30ab-102d-86b0-7a5022ba4115"
+                  },
+                  {
+                    "id": "reason",
+                    "title": "Reason",
+                    "concept": "dce0c977-30ab-102d-86b0-7a5022ba4115"
+                  },
+                  {
+                    "id": "actions",
+                    "title": "actionsTitle",
+                    "actionOptions": [
+                      {
+                        "formName": "DR TB: HMIS TB 001 Second Line TB Treatment Card - Followup Section",
+                        "label": "View Details",
+                        "mode": "view"
+                      },
+                      {
+                        "formName": "DR TB: HMIS TB 001 Second Line TB Treatment Card - Followup Section",
+                        "label": "EditForm",
+                        "mode": "edit"
+                      }
+                    ]
+                  }
+                ],
+                "launchOptions": {
+                  "displayText": "Add"
+                },
+                "formList": [
+                  {
+                    "uuid": "5f69626e-fbe2-11ea-adc1-0242ac120002"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "eid-program-dashboard-slot": {
+        "add": ["encounter-list"],
+        "configure": {
+          "encounter-list": {
+            "tabDefinitions": [
+              {
+                "tabName": "Enrollmment",
+                "hasFilter": true,
+                "headerTitle": "Enrollmment",
+                "displayText": "Enrollmment",
+                "encounterType": "9fcfcc91-ad60-4d84-9710-11cc25258719",
+                "columns": [
+                  {
+                    "id": "substitutionDate",
+                    "isDate": true,
+                    "title": "Substitution Date",
+                    "concept": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "id": "New Regimen",
+                    "title": "New Regimen",
+                    "concept": "dd2b0b4d-30ab-102d-86b0-7a5022ba4115"
+                  },
+                  {
+                    "id": "reason",
+                    "title": "Reason",
+                    "concept": "dce0c977-30ab-102d-86b0-7a5022ba4115"
+                  },
+                  {
+                    "id": "actions",
+                    "title": "actionsTitle",
+                    "actionOptions": [
+                      {
+                        "formName": "HMIS ACP 015:Exposed Infant Card Summary Form",
+                        "label": "View Details",
+                        "mode": "view"
+                      },
+                      {
+                        "formName": "HMIS ACP 015:Exposed Infant Card Summary Form",
+                        "label": "EditForm",
+                        "mode": "edit"
+                      }
+                    ]
+                  }
+                ],
+                "launchOptions": {
+                  "displayText": "Add"
+                },
+                "formList": [
+                  {
+                    "uuid": "860c5f2f-cf3c-4c3f-b0c4-9958b6a5a938"
+                  }
+                ]
+              },
+              {
+                "tabName": "Follow Up",
+                "hasFilter": true,
+                "headerTitle": "Follow Up",
+                "displayText": "Follow Up",
+                "encounterType": "4345dacb-909d-429c-99aa-045f2db77e2b",
+                "columns": [
+                  {
+                    "id": "substitutionDate",
+                    "isDate": true,
+                    "title": "Substitution Date",
+                    "concept": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "id": "New Regimen",
+                    "title": "New Regimen",
+                    "concept": "dd2b0b4d-30ab-102d-86b0-7a5022ba4115"
+                  },
+                  {
+                    "id": "reason",
+                    "title": "Reason",
+                    "concept": "dce0c977-30ab-102d-86b0-7a5022ba4115"
+                  },
+                  {
+                    "id": "actions",
+                    "title": "actionsTitle",
+                    "actionOptions": [
+                      {
+                        "formName": "HMIS ACP 015 - Exposed Infant Card Encounter Form",
+                        "label": "View Details",
+                        "mode": "view"
+                      },
+                      {
+                        "formName": "HMIS ACP 015 - Exposed Infant Card Encounter Form",
+                        "label": "EditForm",
+                        "mode": "edit"
+                      }
+                    ]
+                  }
+                ],
+                "launchOptions": {
+                  "displayText": "Add"
+                },
+                "formList": [
+                  {
+                    "uuid": "6f6b4802-7642-4226-84dc-ea7db01924b6"
                   }
                 ]
               }
@@ -1555,6 +2314,11 @@
               "privileges": ["View Clinical Room Menu"]
             }
           },
+          "dispensing-dashboard-link": {
+            "Display conditions": {
+              "privileges": ["View Dispensing Menu"]
+            }
+          },
           "patient-lists-dashboard-link": {
             "Display conditions": {
               "privileges": ["Manage Patient Lists"]
@@ -1585,6 +2349,7 @@
               "privileges": ["Manage Laboratory"]
             }
           },
+
           "home-widget-db-link": {
             "Display conditions": {
               "privileges": ["Manage Home Link"]
@@ -1634,6 +2399,11 @@
               "privileges": ["Add Patient Button"]
             }
           }
+        }
+      },
+      "notifications-menu-button-slot": {
+        "Display conditions": {
+          "privileges": ["View Notification Menu"]
         }
       }
     },
