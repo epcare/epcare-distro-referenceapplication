@@ -653,11 +653,6 @@
     }
   },
   "@openmrs/esm-primary-navigation-app": {
-    "Display conditions": {
-      "privileges": [
-        "View Menu App"
-      ]
-    },
     "extensionSlots": {
       "top-nav-actions-slot": {
         "configure": {
