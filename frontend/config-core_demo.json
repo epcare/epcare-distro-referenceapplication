@@ -27,8 +27,8 @@
       ]
     },
     "logo": {
-      "src": "/openmrs/spa/prisonsemr-logo-color.png",
-      "alt": "PrisonEMR+ logo"
+      "src": "/openmrs/spa/logo.svg",
+      "alt": "UgandaEMR+ logo"
     },
     "extensionSlots": {
       "visit-header-right-slot": {
@@ -60,9 +60,9 @@
     }
   },
   "@openmrs/esm-styleguide": {
-    "Brand color #1": "#800000",
-    "Brand color #2": "#800000",
-    "Brand color #3": "#800000"
+    "Brand color #1": " #009384",
+    "Brand color #2": " #009384",
+    "Brand color #3": " #009384"
   },
   "@openmrs/esm-patient-biometrics-app": {
     "Display conditions": {
@@ -175,10 +175,18 @@
     }
   },
   "@openmrs/esm-home-app": {
-    "Display conditions": {
-      "privileges": [
-        "Access home app"
-      ]
+    "extensionSlots": {
+      "clinical-appointments-dashboard-slot": {
+        "configure": {
+          "clinical-appointments-dashboard": {
+            "Display conditions": {
+              "privileges": [
+                "Manage Patient Appointments"
+              ]
+            }
+          }
+        }
+      }
     }
   },
   "@ugandaemr/esm-patient-registration-app": {
@@ -187,7 +195,7 @@
     ],
     "logo": {
       "src": "/openmrs/spa/logo-white.svg",
-      "alt": "PrisonEMR+ logo"
+      "alt": "UgandaEMR+ logo"
     },
     "sections": [
       "demographics",
@@ -426,16 +434,16 @@
   },
   "@ugandaemr/esm-login-app": {
     "logo": {
-      "src": "/openmrs/spa/prisonsemr-logo-white.png",
-      "alt": "PrisonEMR+ logo"
+      "src": "/openmrs/spa/logo.svg",
+      "alt": "UgandaEMR+ logo"
     },
     "loginBackground": {
-      "src": "/openmrs/spa/prisonsemr-cover.png",
-      "alt": "PrisonEMR+ logo"
+      "src": "/openmrs/spa/background.png",
+      "alt": "UgandaEMR+ logo"
     },
     "loginBanner": {
-      "src": "/openmrs/spa/prisonsemr-logo-color.png",
-      "alt": "PrisonEMR+ logo"
+      "src": "/openmrs/spa/banner.svg",
+      "alt": "UgandaEMR+ logo"
     }
   },
   "@openmrs/esm-primary-navigation-app": {
@@ -529,7 +537,7 @@
           "clinical-appointments-dashboard-link": {
             "Display conditions": {
               "privileges": [
-                "Manage appointments dashboard"
+                "Manage patient appointments"
               ]
             }
           },
@@ -745,8 +753,8 @@
       }
     },
     "logo": {
-      "src": "/openmrs/spa/prisonsemr-logo-white.png",
-      "alt": "PrisonEMR+ logo"
+      "src": "/openmrs/spa/logo-white.svg",
+      "alt": "UgandaEMR+ logo"
     }
   },
   "@openmrs/esm-patient-banner-app": {
