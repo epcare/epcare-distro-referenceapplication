@@ -7,7 +7,7 @@
   <parent>
     <groupId>org.openmrs.module</groupId>
     <artifactId>distro-emr</artifactId>
-    <version>4.0.4-SNAPSHOT</version>
+    <version>4.0.6-SNAPSHOT</version>
   </parent>
 
   <artifactId>ugandaemr-distro</artifactId>
@@ -81,9 +81,9 @@
     <o3formsVersion>2.3.0</o3formsVersion>
     <orderTemplatesVersion>1.0.3</orderTemplatesVersion>
     <attachmentsVersion>3.0.0</attachmentsVersion>
-    <ugandaemrReportsVersion>2.1.3</ugandaemrReportsVersion>
-    <stockmanagementVersion>1.4.2</stockmanagementVersion>
-    <ugandaemrSyncVersion>1.2.0</ugandaemrSyncVersion>
+    <ugandaemrReportsVersion>2.1.4-SNAPSHOT</ugandaemrReportsVersion>
+    <stockmanagementVersion>1.4.5-SNAPSHOT</stockmanagementVersion>
+    <ugandaemrSyncVersion>1.3.2-SNAPSHOT</ugandaemrSyncVersion>
     <reportingCompatibilityVersion>2.0.9</reportingCompatibilityVersion>
     <laboratoryManagementVersion>1.0.0-SNAPSHOT</laboratoryManagementVersion>
 
