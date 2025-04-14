@@ -27,6 +27,7 @@
 		<openmrsTestutilsVersion>1.3</openmrsTestutilsVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+    <initializerVersion>2.5.2</initializerVersion>
 		<webservices.restModuleVersion>2.47.0</webservices.restModuleVersion>
 		<adminuiVersion>1.6.0</adminuiVersion>
 		<addresshierarchyVersion>2.15.2</addresshierarchyVersion>
