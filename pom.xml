@@ -3,24 +3,17 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.openmrs.module</groupId>
-  <artifactId>distro-emr</artifactId>
-  <name>UgandaEMR</name>
-  <description>Customizations for Uganda OpenMRS distribution</description>
-  <url>https://wiki.openmrs.org/display/docs/ugandaemr+Module+Module</url>
-
-
-  <version>4.1.2-SNAPSHOT</version>
+  <artifactId>epcarecore</artifactId>
+  <name>EPCare Core</name>
+  <description>The distribution module for ePcare Hospital management system. </description>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <organization>
-    <name>Monitoring and Evaluation Technical Support Project (METS)</name>
-    <url>http://mets.or.ug</url>
-  </organization>
 
   <scm>
-    <connection>scm:git:git@github.com:mohuganda/openmrs-module-ugandaemr.git</connection>
-    <developerConnection>scm:git:git@github.com:mohuganda/openmrs-module-ugandaemr.git</developerConnection>
-    <url>scm:git:https://github.com/mohuganda/openmrs-module-ugandaemr</url>
+    <connection>scm:git:git@github.com:openmrs/openmrs-module-epcarecore.git</connection>
+    <developerConnection>scm:git:git@github.com:openmrs/openmrs-module-epcarecore.git</developerConnection>
+    <url>https://github.com/openmrs/openmrs-module-epcarecore/</url>
     <tag>HEAD</tag>
   </scm>
 

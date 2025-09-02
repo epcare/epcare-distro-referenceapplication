@@ -27,8 +27,8 @@ jobs:
           context: .
           file: ./Dockerfile  # Adjust if your Dockerfile is in a subdirectory
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/ugandaemr-distro:latest
-            ${{ secrets.DOCKER_USERNAME }}/ugandaemr-distro:${{ github.sha }}
+            ${{ secrets.DOCKER_USERNAME }}/epcare-distro:latest
+            ${{ secrets.DOCKER_USERNAME }}/epcare-distro:${{ github.sha }}
           push: true
 
       # Step 4: Build and Push Frontend Docker Image
@@ -38,6 +38,6 @@ jobs:
           context: ./frontend  # Adjust to your frontend directory
           file: ./frontend/Dockerfile  # Adjust if your Dockerfile is in a subdirectory
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/ugandaemr-frontend:latest
-            ${{ secrets.DOCKER_USERNAME }}/ugandaemr-distro:${{ github.sha }}
+            ${{ secrets.DOCKER_USERNAME }}/epcare-frontend:latest
+            ${{ secrets.DOCKER_USERNAME }}/epcare-distro:${{ github.sha }}
           push: true
