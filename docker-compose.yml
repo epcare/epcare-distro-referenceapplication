@@ -13,7 +13,7 @@ services:
       - openmrs-network
 
   frontend:
-    image: jabahum/ugandaemr-frontend:latest
+    image: jabahum/epcare-frontend:latest
     restart: "unless-stopped"
     environment:
       SPA_PATH: /openmrs/spa
@@ -29,7 +29,7 @@ services:
       - openmrs-network
 
   backend:
-    image: jabahum/ugandaemr-distro:latest
+    image: jabahum/epcare-distro:latest
     restart: "unless-stopped"
     depends_on:
       - db
