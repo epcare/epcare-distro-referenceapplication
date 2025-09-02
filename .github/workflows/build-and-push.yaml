@@ -39,5 +39,5 @@ jobs:
           file: ./frontend/Dockerfile  # Adjust if your Dockerfile is in a subdirectory
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/epcare-frontend:latest
-            ${{ secrets.DOCKER_USERNAME }}/epcare-distro:${{ github.sha }}
+            ${{ secrets.DOCKER_USERNAME }}/epcare-frontend:${{ github.sha }}
           push: true
