@@ -1,35 +1,9 @@
 {
-  "frontendModules": {
-    "@openmrs/esm-cohort-builder-app": "next",
-    "@openmrs/esm-devtools-app": "next", 
-    "@openmrs/esm-home-app": "5.6.4-pre.575",
-    "@openmrs/esm-implementer-tools-app": "next",
-    "@openmrs/esm-patient-allergies-app": "next",
-    "@openmrs/esm-patient-banner-app": "next",
-    "@openmrs/esm-patient-chart-app": "next",
-    "@openmrs/esm-patient-conditions-app": "next",
-    "@openmrs/esm-patient-forms-app": "next", 
-    "@openmrs/esm-patient-list-app": "next", 
-    "@openmrs/esm-patient-search-app": "next",
-    "@openmrs/esm-patient-vitals-app": "10.2.0",
-    "@openmrs/esm-system-admin-app": "next",
-    "@openmrs/esm-appointments-app": "next", 
-    "@openmrs/esm-help-menu-app": "next",
-    "@openmrs/esm-patient-attachments-app": "next",
-    "@openmrs/esm-patient-programs-app": "next",
-    "@openmrs/esm-patient-notes-app": "next",  
-    "@openmrs/esm-primary-navigation-app": "next", 
-    "@ugandaemr/esm-login-app": "next",  
-    "@ugandaemr/esm-ugandaemr-exchange-app": "next", 
-    "@ugandaemr/esm-patient-registration-app": "next",
-    "@ugandaemr/esm-ugandaemr-app": "1.0.4-pre.1019"
-     
-
-  },
-  "importmap": "/openmrs/spa/importmap.json",
-  "apiUrl": "/openmrs/",
-  "configUrls": [
-    "${openmrsSpaBase}/config.json"
-  ],
-  "spaPath": "/openmrs/spa/"
+  "spaPath": "$SPA_PATH",
+  "apiUrl": "$API_URL",
+  "configUrls": ["$SPA_CONFIG_URLS"],
+  "defaultLocale": "$SPA_DEFAULT_LOCALE",
+  "importmap": "$SPA_PATH/importmap.json",
+  "routes": "$SPA_PATH/routes.registry.json",
+  "supportOffline": false
 }
