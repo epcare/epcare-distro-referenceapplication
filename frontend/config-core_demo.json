@@ -382,7 +382,7 @@
     },
     "showCenteredLogin": false,
     "supportEmail": "info@saloneemr.org",
-    "footerOpenMRSLogo": "omrs-logo-white",
+    "footerOpenMRSLogo": "omrs-logo-full-color",
     "showDefaultHome": true,
     "orgUrl":"https://saloneemr.org",
     "orgDescription": "Ministry of Health - Republic of Sierra Leone"
