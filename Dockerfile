@@ -1,6 +1,6 @@
 
 ### Dev Stage
-FROM openmrs/openmrs-core:2.8.0-dev-amazoncorretto-21 AS dev
+FROM openmrs/openmrs-core:2.8.x-dev-amazoncorretto-21 AS dev
 WORKDIR /openmrs_distro
 
 ARG MVN_ARGS_SETTINGS="-s /usr/share/maven/ref/settings-docker.xml -U -P distro"
@@ -24,7 +24,7 @@ RUN mvn $MVN_ARGS_SETTINGS clean
 
 ### Run Stage
 # Replace 'nightly' with the exact version of openmrs-core built for production (if available)
-FROM openmrs/openmrs-core:2.8.0-amazoncorretto-21
+FROM openmrs/openmrs-core:2.8.x-amazoncorretto-21
 
 # Do not copy the war if using the correct openmrs-core image version
 COPY --from=dev /openmrs/distribution/openmrs_core/openmrs.war /openmrs/distribution/openmrs_core/
