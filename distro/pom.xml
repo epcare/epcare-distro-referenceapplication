@@ -43,7 +43,7 @@
     <idgenVersion>4.14.0</idgenVersion>
     <initializerVersion>2.9.0</initializerVersion>
     <junitParamsVersion>1.0.4</junitParamsVersion>
-    <labmanagementVersion>1.0.2</labmanagementVersion>
+    <labmanagementVersion>1.0.3</labmanagementVersion>
     <legacyuiVersion>1.23.0</legacyuiVersion>
     <metadatadeployVersion>1.13.0</metadatadeployVersion>
     <metadatamappingVersion>1.6.0</metadatamappingVersion>
@@ -66,9 +66,9 @@
     <teleconsultationVersion>2.0.0</teleconsultationVersion>
     <ugandaemrReportsVersion>2.1.6</ugandaemrReportsVersion>
     <ugandaemrSyncVersion>2.0.4</ugandaemrSyncVersion>
-    <ugandaemrVersion>4.1.2-SNAPSHOT</ugandaemrVersion>
+    <ugandaemrVersion>4.1.2</ugandaemrVersion>
     <webservices.restModuleVersion>2.49.0</webservices.restModuleVersion>
-    <ugandaemr-content.version>1.0.0</ugandaemr-content.version>
+    <ugandaemr-content.version>1.0.1</ugandaemr-content.version>
     <epcare-content.version>1.0.1</epcare-content.version>
 
   </properties>

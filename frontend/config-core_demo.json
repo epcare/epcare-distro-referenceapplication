@@ -34,7 +34,7 @@
     "extensionSlots": {
       "visit-header-right-slot": {
         "remove": [
-          "start-visit-button"
+          "start-visit-button2"
         ]
       },
       "patient-highlights-bar-slot": {
@@ -928,12 +928,12 @@
         "remove": [
           "stop-visit-button",
           "mark-patient-deceased-button",
-          "start-visit-button",
+          "start-visit-button2",
           "cancel-visit-button",
           "delete-visit-button"
         ],
         "configure": {
-          "start-visit-button": {
+          "start-visit-button2": {
             "Display conditions": {
               "privileges": [
                 "Start Visit Button"
@@ -1041,14 +1041,14 @@
     "extensionSlots": {
       "patient-actions-slot": {
         "remove": [
-          "start-visit-button",
+          "start-visit-button2",
           "stop-visit-button",
           "cancel-visit-button",
           "mark-patient-deceased-button",
           "delete-visit-button"
         ],
         "configure": {
-          "start-visit-button": {
+          "start-visit-button2": {
             "Display conditions": {
               "privileges": [
                 "Start Visit Button"
@@ -1099,9 +1099,9 @@
           }
         }
       },
-      "start-visit-button-slot": {
+      "start-visit-button2-slot": {
         "remove": [
-          "start-visit-button-patient-search"
+          "start-visit-button2-patient-search"
         ]
       }
     }
