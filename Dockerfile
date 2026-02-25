@@ -18,7 +18,6 @@ RUN cp /openmrs_distro/distro/target/sdk-distro/web/openmrs.war /openmrs/distrib
 RUN cp /openmrs_distro/distro/target/sdk-distro/web/openmrs-distro.properties /openmrs/distribution/
 RUN cp -R /openmrs_distro/distro/target/sdk-distro/web/modules /openmrs/distribution/openmrs_modules
 RUN cp -R /openmrs_distro/distro/target/sdk-distro/web/owa /openmrs/distribution/openmrs_owas
-RUN cp -R /openmrs_distro/distro/target/sdk-distro/web/config /openmrs/distribution/openmrs_config/
 
 # Clean up after copying needed artifacts
 RUN mvn $MVN_ARGS_SETTINGS clean
@@ -33,4 +32,4 @@ COPY --from=dev /openmrs/distribution/openmrs_core/openmrs.war /openmrs/distribu
 COPY --from=dev /openmrs/distribution/openmrs-distro.properties /openmrs/distribution/
 COPY --from=dev /openmrs/distribution/openmrs_modules /openmrs/distribution/openmrs_modules
 COPY --from=dev /openmrs/distribution/openmrs_owas /openmrs/distribution/openmrs_owas
-# COPY --from=dev /openmrs_distro/distro/configuration /openmrs/distribution/openmrs_config
+COPY --from=dev /openmrs_distro/distro/configuration /openmrs/distribution/openmrs_config
