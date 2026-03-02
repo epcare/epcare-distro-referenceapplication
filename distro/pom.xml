@@ -69,7 +69,7 @@
     <ugandaemrVersion>5.0.0</ugandaemrVersion>
     <webservices.restModuleVersion>2.49.0</webservices.restModuleVersion>
     <ugandaemr-content.version>1.0.1</ugandaemr-content.version>
-    <epcare-content.version>1.0.1</epcare-content.version>
+    <!-- <epcare-content.version>1.0.2-SNAPSHOT</epcare-content.version> -->
 
   </properties>
 
