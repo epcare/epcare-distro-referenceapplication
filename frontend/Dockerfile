@@ -1,7 +1,8 @@
+# syntax=docker/dockerfile:1.3
 #--------------------------------------------
 # Dev Stage - Assembles and Builds Frontend
 #--------------------------------------------
-FROM --platform=$BUILDPLATFORM node:alpine as dev
+FROM --platform=$BUILDPLATFORM node:22-alpine as dev
 
 ARG APP_SHELL_VERSION=next
 
@@ -19,9 +20,12 @@ RUN if [ ! -f ./spa/index.html ]; then echo 'Build failed. Please check the logs
 #--------------------------------------------
 # Runtime Stage - Published Image
 #--------------------------------------------
-FROM nginx:alpine
+FROM nginx:1.25-alpine
 
-RUN apk update && apk upgrade && apk add --no-cache moreutils
+RUN apk update && \
+  apk upgrade && \
+  # add more utils for sponge and envsubst
+  apk add --no-cache moreutils
 
 # clear any default files installed by nginx
 RUN rm -rf /usr/share/nginx/html/*
@@ -34,5 +38,6 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=dev /app/spa /usr/share/nginx/html
 COPY config-core_demo.json /usr/share/nginx/html
 COPY assets /usr/share/nginx/html/
+
 
 CMD ["/usr/local/bin/startup.sh"]
