@@ -305,12 +305,15 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${project.build.directory}</outputDirectory>
+              <outputDirectory>
+                ${project.build.directory}
+              </outputDirectory>
               <resources>
                 <resource>
                   <directory>${project.basedir}</directory>
                   <includes>
                     <include>distro.properties</include>
+                    <include>distro-no-demo.properties</include>
                   </includes>
                   <filtering>true</filtering>
                 </resource>
@@ -326,10 +329,10 @@
         <executions>
           <execution>
             <id>openmrs-sdk:build-distro</id>
-            <phase>package</phase>
             <goals>
               <goal>build-distro</goal>
             </goals>
+            <phase>package</phase>
             <configuration>
               <distro>${project.build.directory}/distro.properties</distro>
               <dir>${project.build.directory}/sdk-distro</dir>
