@@ -127,12 +127,7 @@
       <scope>provided</scope>
     </dependency>
 
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>dataexchange-api</artifactId>
-      <version>${dataexchangeVersion}</version>
-      <scope>provided</scope>
-    </dependency>
+
 
     <dependency>
       <groupId>org.openmrs.module</groupId>
