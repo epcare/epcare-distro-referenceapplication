@@ -1,6 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
@@ -25,7 +24,7 @@
 
     <openMRSVersion>2.7.4</openMRSVersion>
 
-   <addresshierarchyVersion>2.21.0</addresshierarchyVersion>
+    <addresshierarchyVersion>2.21.0</addresshierarchyVersion>
     <attachmentsVersion>3.7.0</attachmentsVersion>
     <bahmniappointmentVersion>2.0.2</bahmniappointmentVersion>
     <bedmanagementVersion>6.1.0</bedmanagementVersion>
@@ -34,16 +33,15 @@
     <cohortModuleVersion>3.7.3</cohortModuleVersion>
     <databaseBackupVersion>1.3.0</databaseBackupVersion>
     <dataEntryStatisticsVersion>1.8.0</dataEntryStatisticsVersion>
-    <dataexchangeVersion>1.3.8</dataexchangeVersion>
     <emrapiVersion>2.3.0</emrapiVersion>
     <eventVersion>2.10.0</eventVersion>
-    <fhir2Version>2.5.0</fhir2Version>
+    <fhir2Version>2.8.0</fhir2Version>
     <formfilterVersion>1.3.0</formfilterVersion>
     <htmlwidgetsVersion>1.11.0</htmlwidgetsVersion>
     <idgenVersion>4.14.0</idgenVersion>
     <initializerVersion>2.9.0</initializerVersion>
     <junitParamsVersion>1.0.4</junitParamsVersion>
-    <labmanagementVersion>1.0.3</labmanagementVersion>
+    <labmanagementVersion>1.0.4</labmanagementVersion>
     <legacyuiVersion>1.23.0</legacyuiVersion>
     <metadatadeployVersion>1.13.0</metadatadeployVersion>
     <metadatamappingVersion>1.6.0</metadatamappingVersion>
@@ -65,10 +63,10 @@
     <stockmanagementVersion>2.0.3</stockmanagementVersion>
     <teleconsultationVersion>2.0.0</teleconsultationVersion>
     <ugandaemrReportsVersion>2.1.6</ugandaemrReportsVersion>
-    <ugandaemrSyncVersion>2.0.5</ugandaemrSyncVersion>
-    <ugandaemrVersion>5.0.1</ugandaemrVersion>
+    <ugandaemrSyncVersion>2.0.10</ugandaemrSyncVersion>
+    <ugandaemrVersion>5.0.7</ugandaemrVersion>
     <webservices.restModuleVersion>2.49.0</webservices.restModuleVersion>
-    <ugandaemr-content.version>1.0.3</ugandaemr-content.version>
+    <ugandaemr-content.version>1.0.5</ugandaemr-content.version>
     <epcare-content.version>1.0.1</epcare-content.version>
 
   </properties>
@@ -109,7 +107,7 @@
       <scope>test</scope>
     </dependency>
 
-  
+
 
     <!-- End OpenMRS core -->
 
@@ -214,11 +212,11 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-				<groupId>org.openmrs.module</groupId>
-				<artifactId>reportingcompatibility-api</artifactId>
-				<version>${reportingCompatibilityVersion}</version>
-				<scope>test</scope>
-			</dependency>
+      <groupId>org.openmrs.module</groupId>
+      <artifactId>reportingcompatibility-api</artifactId>
+      <version>${reportingCompatibilityVersion}</version>
+      <scope>test</scope>
+    </dependency>
 
     <dependency>
       <groupId>org.openmrs.module</groupId>
