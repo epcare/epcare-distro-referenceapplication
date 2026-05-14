@@ -14,10 +14,12 @@ COPY distro ./distro/
 ARG CACHE_BUST
 
 RUN --mount=type=secret,id=m2settings,target=/usr/share/maven/ref/settings-docker.xml \
+  FINAL_MVN_ARGS="$MVN_ARGS" && \
   if [ "$(arch)" != "x86_64" ]; then \
-  MVN_ARGS="$MVN_ARGS -Dmaven.deploy.skip=true"; \
+  FINAL_MVN_ARGS="$FINAL_MVN_ARGS -Dmaven.deploy.skip=true"; \
   fi && \
-  mvn $MVN_ARGS $MVN_COMMAND -e
+  echo "Running: mvn $FINAL_MVN_ARGS $MVN_COMMAND -e" && \
+  mvn $FINAL_MVN_ARGS $MVN_COMMAND -e -X
 
 RUN cp /openmrs_distro/distro/target/sdk-distro/web/openmrs_core/openmrs.war /openmrs/distribution/openmrs_core/
 RUN cp /openmrs_distro/distro/target/sdk-distro/web/openmrs-distro.properties /openmrs/distribution/
