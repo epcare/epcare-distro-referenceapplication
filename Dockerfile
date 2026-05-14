@@ -6,16 +6,20 @@ WORKDIR /openmrs_distro
 
 ARG MVN_ARGS="-s /usr/share/maven/ref/settings-docker.xml -U -P distro"
 ARG MVN_COMMAND="install"
-
 # Copy build files
 COPY pom.xml ./
 COPY distro ./distro/
 
 ARG CACHE_BUST
 # Build the distro, but only deploy from the amd64 build
+
+
 RUN --mount=type=secret,id=m2settings,target=/usr/share/maven/ref/settings-docker.xml \
-  if [ "$(arch)" != "x86_64" ]; then MVN_ARGS="$MVN_ARGS -Dmaven.deploy.skip=true"; fi && \
-  mvn $MVN_ARGS $MVN_COMMAND -e -X
+  FINAL_MVN_ARGS="$MVN_ARGS" && \
+  if [ "$(arch)" != "x86_64" ]; then \
+  FINAL_MVN_ARGS="$FINAL_MVN_ARGS -Dmaven.deploy.skip=true"; \
+  fi && \
+  mvn $FINAL_MVN_ARGS $MVN_COMMAND -e
 
 RUN cp /openmrs_distro/distro/target/sdk-distro/web/openmrs_core/openmrs.war /openmrs/distribution/openmrs_core/
 
