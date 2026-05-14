@@ -4,8 +4,8 @@
 FROM amazoncorretto:21 AS dev
 
 # Install dependencies needed for OpenMRS SDK
-RUN microdnf install -y maven && \
-    microdnf clean all
+RUN dnf install -y maven && \
+    dnf clean all
 
 # Create OpenMRS directory structure needed for copy operations
 RUN mkdir -p /openmrs/distribution/openmrs_core
