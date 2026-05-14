@@ -1,12 +1,11 @@
 # syntax=docker/dockerfile:1
 
-### Dev Stage - Use Debian-based image for newer GLIBC (needed for Node.js)
+### Dev Stage - Use Amazon Linux 2023 for newer GLIBC (needed for Node.js)
 FROM amazoncorretto:21 AS dev
 
 # Install dependencies needed for OpenMRS SDK
-RUN apt-get update && \
-    apt-get install -y maven && \
-    rm -rf /var/lib/apt/lists/*
+RUN microdnf install -y maven && \
+    microdnf clean all
 
 # Create OpenMRS directory structure needed for copy operations
 RUN mkdir -p /openmrs/distribution/openmrs_core
