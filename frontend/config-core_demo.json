@@ -34,7 +34,7 @@
     "extensionSlots": {
       "visit-header-right-slot": {
         "remove": [
-          "start-visit-button2"
+          "start-visit-button"
         ]
       },
       "patient-highlights-bar-slot": {
@@ -925,15 +925,8 @@
   "@openmrs/esm-patient-banner-app": {
     "extensionSlots": {
       "patient-actions-slot": {
-        "remove": [
-          "stop-visit-button",
-          "mark-patient-deceased-button",
-          "start-visit-button2",
-          "cancel-visit-button",
-          "delete-visit-button"
-        ],
         "configure": {
-          "start-visit-button2": {
+          "start-visit-button": {
             "Display conditions": {
               "privileges": [
                 "Start Visit Button"
@@ -1040,15 +1033,8 @@
   "@openmrs/esm-patient-search-app": {
     "extensionSlots": {
       "patient-actions-slot": {
-        "remove": [
-          "start-visit-button2",
-          "stop-visit-button",
-          "cancel-visit-button",
-          "mark-patient-deceased-button",
-          "delete-visit-button"
-        ],
         "configure": {
-          "start-visit-button2": {
+          "start-visit-button": {
             "Display conditions": {
               "privileges": [
                 "Start Visit Button"
@@ -1099,9 +1085,9 @@
           }
         }
       },
-      "start-visit-button2-slot": {
+      "start-visit-button-slot2": {
         "remove": [
-          "start-visit-button2-patient-search"
+          "patient-search-start-visit-button"
         ]
       }
     }
